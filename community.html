@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Itzodd SkinCare - Community</title>
+    <style>
+        body {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            background-color: #fefefe;
+            color: #344d41;
+            line-height: 1.6;
+        }
+        header,
+        footer {
+            background-color: #8cbc88;
+            color: white;
+            padding: 1rem 2rem;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-right: 1rem;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        main {
+            padding: 2rem;
+        }
+        .hero {
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Itzodd SkinCare</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="product.html">Products</a>
+            <a href="blog.html">Blog</a>
+            <a href="community.html">Community</a>
+            <span id="nav-auth"></span>
+        </nav>
+    </header>
+    <main>
+        <section class="hero">
+            <h2>Join the Itzodd Community</h2>
+            <p>Connect with fellow skincare enthusiasts, share routines and discover tips for healthy skin. Our community is a friendly place to discuss all things skincare.</p>
+        </section>
+    </main>
+    <footer>
+        &copy; 2024 Itzodd SkinCare. All Rights Reserved.
+    </footer>
+    <script>
+        function updateAuthNav() {
+            const navAuth = document.getElementById('nav-auth');
+            const user = localStorage.getItem('itzoddUser');
+            if (user) {
+                navAuth.innerHTML = `<a href="login.html" id="logout-btn">Logout (${user})</a>`;
+                document.getElementById('logout-btn').addEventListener('click', (e) => {
+                    e.preventDefault();
+                    localStorage.removeItem('itzoddUser');
+                    updateAuthNav();
+                    alert('Logged out successfully!');
+                });
+            } else {
+                navAuth.innerHTML = '<a href="login.html" class="login-logout">Login</a>';
+            }
+        }
+        updateAuthNav();
+    </script>
+</body>
+</html>
